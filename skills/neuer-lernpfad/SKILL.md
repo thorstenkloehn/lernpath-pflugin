@@ -20,11 +20,12 @@ Thema aus den Argumenten: $ARGUMENTS (falls leer, frage danach).
    - **Ziel** (was soll der Schüler am Ende können?).
    - **Vorwissen** (z. B. „Bash-Entwickler“, „Anfänger“).
    - Bei `programmieren`: **Dateiendung** (`.rs`) und **Ausführbefehl** (`cargo run`, `python3`, `bash` …).
+   - **Aufgabenform:** `datei` (eine Datei `aufgabe<Endung>`, z. B. Python, Bash) oder `projekt` (ein Projektordner mit Build-Werkzeug, z. B. Cargo, npm, Go-Module, Maven). Vorschlag aus dem Ausführbefehl ableiten (`cargo`, `npm`, `go`, `mvn`, `gradle`, `dotnet` → `projekt`), sonst `datei`; bei Typ `sprache`/`sonstiges` immer `datei`.
    - **Sprache der Erklärungen** (Standard Deutsch).
 2. **Zielort:** das Arbeitsverzeichnis. Existiert `<Ordner>` dort schon, **abbrechen und nachfragen**, nichts überschreiben.
 3. **Gerüst erzeugen:**
    ```bash
-   bash "${CLAUDE_PLUGIN_ROOT}/skills/neuer-lernpfad/scripts/scaffold.sh" "<Ordner>" "<Thema>" "<typ>" "<Ziel>" "<Vorwissen>" "<.endung oder ->" "<Ausführbefehl oder ->" "<Sprache>"
+   bash "${CLAUDE_PLUGIN_ROOT}/skills/neuer-lernpfad/scripts/scaffold.sh" "<Ordner>" "<Thema>" "<typ>" "<Ziel>" "<Vorwissen>" "<.endung oder ->" "<Ausführbefehl oder ->" "<Sprache>" "<datei|projekt>"
    ```
 4. **Zusammenfassen:** Ordner, Metadaten und nächster Schritt: `/lernpath:lernpfad-aufbauen`.
 

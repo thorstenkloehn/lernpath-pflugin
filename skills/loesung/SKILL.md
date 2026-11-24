@@ -12,7 +12,7 @@ Beachte `lernpath:lehrer`. Kriterien: [bewertungs_kriterien.md](../lehrer/refere
 
 1. Aktiven Lernpfad, aktuelle Lektion und Typ ermitteln; Aufgabendatei(en) im Lektionsordner lesen. Fehlt sie, nur den erwarteten Pfad nennen.
 2. **Prüfen:**
-   - `programmieren`: mit dem Ausführbefehl aus `LERNPFAD.md` ausführen; ab L2 Linter/Tests der Sprache, falls installiert.
+   - `programmieren`: bei `Aufgabenform: datei` die Datei, bei `projekt` den Projektordner im Lektionsordner (Ordner mit Build-Datei suchen) mit dem Ausführbefehl aus `LERNPFAD.md` ausführen; ab L2 Linter/Tests der Sprache, falls installiert.
    - `sprache` / `sonstiges`: Text bzw. Antworten inhaltlich prüfen.
    - Projekt-Lektion: zusätzlich die Projekt-Checkliste.
 3. **Strukturiertes Feedback:**

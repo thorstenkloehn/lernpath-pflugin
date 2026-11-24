@@ -26,13 +26,13 @@ Ein Lernpfad ist ein Ordner mit `LERNPFAD.md` und `FORTSCHRITT.md`.
    - Genau einer gefunden: nimm ihn.
    - Mehrere: liste sie auf und frage, welcher gemeint ist (oder nutze den Namen aus den Argumenten).
    - Keiner: verweise auf `/lernpath:neuer-lernpfad`.
-3. Lies `LERNPFAD.md` (Metadaten: Thema, Typ, Ziel, Vorwissen, Dateiendung, Ausführbefehl, Sprache) und die Zeile `**Aktuelle Lektion:**` aus `FORTSCHRITT.md`.
+3. Lies `LERNPFAD.md` (Metadaten: Thema, Typ, Ziel, Vorwissen, Dateiendung, Ausführbefehl, Aufgabenform, Sprache) und die Zeile `**Aktuelle Lektion:**` aus `FORTSCHRITT.md`.
 4. Ist der Lernpfad noch nicht aufgebaut (`Aktuelle Lektion: -`, keine Lektionen), verweise auf `/lernpath:lernpfad-aufbauen`.
 
 ## Aufbau eines Lernpfads
 ```text
 <Lernpfad>/
-├── LERNPFAD.md        # Metadaten (Thema, Typ, Ziel, Vorwissen, Endung, Ausführbefehl, Sprache)
+├── LERNPFAD.md        # Metadaten (Thema, Typ, Ziel, Vorwissen, Endung, Ausführbefehl, Aufgabenform, Sprache)
 ├── ROADMAP.md         # Lernpfad: Stufen, Kapitel, Lektionen
 ├── FORTSCHRITT.md     # Zeile "Aktuelle Lektion" + Checkboxen
 ├── README.md
@@ -40,8 +40,10 @@ Ein Lernpfad ist ein Ordner mit `LERNPFAD.md` und `FORTSCHRITT.md`.
 ```
 Details und Namensregeln: [references/lernpfadmodell.md](references/lernpfadmodell.md). Bewertung: [references/bewertungs_kriterien.md](references/bewertungs_kriterien.md).
 
-## Aufgabendatei
-Heißt `aufgabe<Dateiendung>` (z. B. `aufgabe.py`); bei Typ `text` oder `sonstiges` heißt sie `aufgabe.md`.
+## Aufgabenform (`Aufgabenform` in `LERNPFAD.md`, fehlt sie: `datei`)
+- **`datei`:** Die Aufgabe ist **eine Datei** `aufgabe<Dateiendung>` im Lektionsordner (z. B. `aufgabe.py`). Ausführen: `<Ausführbefehl> aufgabe<Endung>`.
+- **`projekt`:** Die Aufgabe ist ein **Projektordner** mit dem Build-Werkzeug der Sprache (z. B. Cargo-Projekt `aufgabe/` mit `src/main.rs`). Der Schüler legt ihn im Lektionsordner selbst an, Standardname `aufgabe/`; ein anderer Name aus der Aufgabenstellung ist erlaubt. Ausführen: `cd <Projektordner> && <Ausführbefehl>`. Nenne in `aufgabe` nie `aufgabe<Endung>` als Datei.
+- Typ `sprache`/`sonstiges`: immer `aufgabe.md`.
 
 ## Projekt-Lektionen (`Lektion_NN_projekt_<name>`)
 Fassen Kapitel (Mini-Projekt), Stufe (Meilenstein) oder Lernpfad (Abschlussprojekt) zusammen. Bei `aufgabe`: keine neue Theorie, kein Code, nur Ziel, Anforderungen, 3–6 Teilschritte und ein erkennbares Ergebnis (z. B. Beispielaufruf mit erwarteter Ausgabe). Bei `frage` nur Denkanstöße. Bei `loesung` zusätzlich die Projekt-Checkliste anwenden.

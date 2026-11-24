@@ -23,7 +23,7 @@ Zum Testen ohne Installation: `claude --plugin-dir /home/thorsten/lernpath-pflug
 | `/lernpath:fortschritt` | Zeigt den Stand aller Lernpfade |
 
 ## Ablauf
-1. `/lernpath:neuer-lernpfad Rust` erzeugt im aktuellen Ordner `Rust/` mit `LERNPFAD.md`, `ROADMAP.md`, `FORTSCHRITT.md`, `README.md`, `kurs/`.
+1. `/lernpath:neuer-lernpfad Rust` (fragt u. a. die Aufgabenform: einzelne Datei oder Projektordner wie bei Cargo) erzeugt im aktuellen Ordner `Rust/` mit `LERNPFAD.md`, `ROADMAP.md`, `FORTSCHRITT.md`, `README.md`, `kurs/`.
 2. `/lernpath:lernpfad-aufbauen` plant Stufen, Kapitel und Lektionen (1 Konzept pro Lektion, Projekte am Kapitelende) und legt leere Lektionsordner an.
 3. Dann im Kreis: `aufgabe` → selbst lösen (ggf. `frage`, `aktiv`) → `loesung`.
 

@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # Erzeugt das leere Gerüst eines eigenen Lernpfads im aktuellen Verzeichnis.
-# Aufruf: scaffold.sh <ordner> <thema> <typ> <ziel> <vorwissen> <endung|-> <ausfuehrbefehl|-> <sprache>
+# Aufruf: scaffold.sh <ordner> <thema> <typ> <ziel> <vorwissen> <endung|-> <ausfuehrbefehl|-> <sprache> [datei|projekt]
 set -euo pipefail
 
 DIR="${1:?Ordnername fehlt}"; THEMA="${2:?Thema fehlt}"; TYP="${3:?Typ fehlt}"
-ZIEL="${4:?Ziel fehlt}"; VORWISSEN="${5:-Anfänger}"; EXT="${6:--}"; RUN="${7:--}"; SPRACHE="${8:-Deutsch}"
+ZIEL="${4:?Ziel fehlt}"; VORWISSEN="${5:-Anfänger}"; EXT="${6:--}"; RUN="${7:--}"; SPRACHE="${8:-Deutsch}"; FORM="${9:-datei}"
 
 case "$TYP" in programmieren|sprache|sonstiges) ;; *) echo "Fehler: Typ muss programmieren, sprache oder sonstiges sein." >&2; exit 1;; esac
+case "$FORM" in datei|projekt) ;; *) echo "Fehler: Aufgabenform muss datei oder projekt sein." >&2; exit 1;; esac
 [[ "$DIR" == */* || "$DIR" == .* ]] && { echo "Fehler: Ordnername darf kein / enthalten oder mit . beginnen." >&2; exit 1; }
 [[ -e "$DIR" ]] && { echo "Fehler: $DIR existiert bereits." >&2; exit 1; }
 
@@ -21,6 +22,7 @@ cat > "$DIR/LERNPFAD.md" <<MD
 - **Vorwissen:** $VORWISSEN
 - **Dateiendung:** $EXT
 - **Ausführbefehl:** $RUN
+- **Aufgabenform:** $FORM
 - **Sprache der Erklärungen:** $SPRACHE
 MD
 

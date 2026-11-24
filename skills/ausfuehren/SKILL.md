@@ -11,8 +11,10 @@ disable-model-invocation: true
 
 Beachte `lernpath:lehrer`. Argumente für das Programm: $ARGUMENTS
 
-1. Aktiven Lernpfad und aktuelle Lektion ermitteln; `Ausführbefehl` und `Dateiendung` aus `LERNPFAD.md` lesen. Ist der Typ nicht `programmieren` oder kein Befehl gesetzt, sage das kurz.
-2. Ausführen: `cd <Lektionsordner> && <Ausführbefehl> aufgabe<Endung> <Argumente>`.
-3. Ausgabe und Exit-Code zeigen. Fehlt die Datei, nur den erwarteten Pfad nennen.
+1. Aktiven Lernpfad und aktuelle Lektion ermitteln; `Ausführbefehl`, `Dateiendung` und `Aufgabenform` aus `LERNPFAD.md` lesen. Ist der Typ nicht `programmieren` oder kein Befehl gesetzt, sage das kurz.
+2. Ausführen:
+   - `datei`: `cd <Lektionsordner> && <Ausführbefehl> aufgabe<Endung> <Argumente>`.
+   - `projekt`: `cd <Projektordner im Lektionsordner> && <Ausführbefehl> <Argumente>` (bei Cargo z. B. `cargo run -- <Argumente>`).
+3. Ausgabe und Exit-Code zeigen. Fehlt die Datei bzw. der Projektordner, nur den erwarteten Pfad nennen.
 
 Nicht bewerten, nichts ändern, keine Lösung verraten. Für die Abgabe: `/lernpath:loesung`.
