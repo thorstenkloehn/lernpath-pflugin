@@ -1,7 +1,7 @@
 ---
 name: neuer-lernpfad
 description: >-
-  Legt einen neuen, eigenen Lernpfad an (Ordner mit LERNPFAD.md, ROADMAP.md, FORTSCHRITT.md, kurs/).
+  Legt einen neuen, eigenen Lernpfad an (Ordner mit LERNPFAD.md, ROADME.md, FORTSCHRITT.md, kurs/).
   Verwende diesen Skill, wenn der Nutzer einen neuen Lernpfad, ein neues Lernthema oder "neuer Kurs" anlegen will.
 argument-hint: "<Thema, z. B. Rust>"
 disable-model-invocation: true
@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 # Skill `neuer-lernpfad`: eigenen Lernpfad anlegen
 
-Erzeugt nur das **leere Gerüst**. Kapitel und Lektionen kommen später mit `/lernpath:lernpfad-aufbauen`. Beachte `lernpath:lehrer`.
+Erzeugt nur das **leere Gerüst**. Kapitel und Lektionen baut der Nutzer danach selbst mit `/lernpath:lernpfad-aufbauen`. Beachte `lernpath:lehrer`.
 
 Thema aus den Argumenten: $ARGUMENTS (falls leer, frage danach).
 
@@ -27,7 +27,7 @@ Thema aus den Argumenten: $ARGUMENTS (falls leer, frage danach).
    ```bash
    bash "${CLAUDE_PLUGIN_ROOT}/skills/neuer-lernpfad/scripts/scaffold.sh" "<Ordner>" "<Thema>" "<typ>" "<Ziel>" "<Vorwissen>" "<.endung oder ->" "<Ausführbefehl oder ->" "<Sprache>" "<datei|projekt>"
    ```
-4. **Zusammenfassen:** Ordner, Metadaten und nächster Schritt: `/lernpath:lernpfad-aufbauen`.
+4. **Zusammenfassen:** Ordner, Metadaten und nächster Schritt: `/lernpath:lernpfad-aufbauen` (der Nutzer nennt seine Kapitel und Lektionen).
 
 ## Regeln
 - Kein `git init`, kein Commit ohne Wunsch.

@@ -11,7 +11,8 @@ case "$FORM" in datei|projekt) ;; *) echo "Fehler: Aufgabenform muss datei oder 
 [[ "$DIR" == */* || "$DIR" == .* ]] && { echo "Fehler: Ordnername darf kein / enthalten oder mit . beginnen." >&2; exit 1; }
 [[ -e "$DIR" ]] && { echo "Fehler: $DIR existiert bereits." >&2; exit 1; }
 
-mkdir -p "$DIR/kurs"
+mkdir -p "$DIR"/kurs/{L1_Grundlagen,L2_Fortgeschritten,L3_Profi}
+touch "$DIR"/kurs/{L1_Grundlagen,L2_Fortgeschritten,L3_Profi}/.gitkeep
 
 cat > "$DIR/LERNPFAD.md" <<MD
 # Lernpfad: $THEMA
@@ -26,12 +27,55 @@ cat > "$DIR/LERNPFAD.md" <<MD
 - **Sprache der Erklärungen:** $SPRACHE
 MD
 
-cat > "$DIR/ROADMAP.md" <<MD
-# Roadmap – $THEMA
+cat > "$DIR/ROADME.md" <<MD
+# Dein strukturierter Lernpfad – $THEMA
+**Ziel:** $ZIEL
+**Vorwissen:** $VORWISSEN
 
-Ziel: $ZIEL
+Dieser Lernpfad gehört dir: Du baust ihn selbst. Trage unten deine Kapitel und Lektionen ein und starte danach \`/lernpath:lernpfad-aufbauen\`. Claude legt daraus die leeren Lektionsordner unter \`kurs/\` und die Checkboxen in \`FORTSCHRITT.md\` an.
 
-> Noch nicht aufgebaut. Mit \`/lernpath:lernpfad-aufbauen\` entstehen hier Stufen, Kapitel und Lektionen.
+---
+
+## So lernst du (der Lernablauf)
+
+| Schritt | Befehl | Wirkung |
+| :--- | :--- | :--- |
+| 1 | \`/lernpath:aufgabe\` | Die Aufgabe der aktuellen Lektion lesen (höchstens 20 % Theorie, keine Lösung) |
+| 2 | selbst lösen | Mindestens 5 Minuten eigener Versuch im Lektionsordner |
+| 3 | \`/lernpath:aktiv\` | Active Recall: Beispiel lesen, ausblenden, aus dem Gedächtnis nachbauen |
+| 4 | \`/lernpath:frage\` | Denkanstoß, wenn du feststeckst |
+| 5 | \`/lernpath:loesung\` | Deine Lösung prüfen lassen, bei Erfolg wird die Lektion abgehakt |
+
+## So schreibst du deine Lektionen
+- **1 Konzept pro Lektion.** Eine Lektion ist ein kleiner Schritt, der in wenigen Minuten machbar ist.
+- Ordne vom Einfachen zum Komplexen. Eine Lektion setzt nur voraus, was davor steht.
+- Pro Kapitel 3–8 Lektionen. Beschreibe jede Lektion in einem Satz: *Was lerne ich, und was kenne ich schon (Vorwissen)?*
+- Optional: Setze am Kapitelende eine **Projekt-Lektion** (\`Lektion NN: Projekt – <Name>\`), die den Stoff des Kapitels verbindet.
+
+---
+
+## 🟢 L1 Grundlagen (<Untertitel: Wo startest du?>)
+
+### Kapitel 01: <Name des Kapitels>
+- **Lektion 01:** <ein Konzept>
+- **Lektion 02:** <ein Konzept>
+
+### Kapitel 02: <Name des Kapitels>
+- **Lektion 01:** <ein Konzept>
+
+---
+
+## 🟡 L2 Fortgeschritten (<Untertitel: Was kommt als Nächstes?>)
+
+### Kapitel 01: <Name des Kapitels>
+- **Lektion 01:** <ein Konzept>
+
+---
+
+## 🟠 L3 Profi (<Untertitel: Wohin soll der Lernpfad führen?>)
+
+### Kapitel 01: <Name des Kapitels>
+- **Lektion 01:** <ein Konzept>
 MD
 
 cat > "$DIR/FORTSCHRITT.md" <<MD
@@ -43,7 +87,11 @@ cat > "$DIR/FORTSCHRITT.md" <<MD
 
 ---
 
-_Noch keine Lektionen. Starte mit \`/lernpath:lernpfad-aufbauen\`._
+## 🟢 L1 Grundlagen
+
+## 🟡 L2 Fortgeschritten
+
+## 🟠 L3 Profi
 MD
 
 cat > "$DIR/README.md" <<MD
@@ -53,7 +101,7 @@ Ziel: $ZIEL
 
 | Befehl | Wirkung |
 | :--- | :--- |
-| \`/lernpath:lernpfad-aufbauen\` | Roadmap, Kapitel und leere Lektionsordner erzeugen oder erweitern |
+| \`/lernpath:lernpfad-aufbauen\` | Deine eigenen Kapitel und Lektionen anlegen oder erweitern |
 | \`/lernpath:aufgabe\` | Aufgabe der aktuellen Lektion (max. 20 % Theorie) |
 | \`/lernpath:aktiv\` | Active Recall |
 | \`/lernpath:frage\` | Denkanstoß ohne Lösung |

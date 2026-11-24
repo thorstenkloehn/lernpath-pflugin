@@ -12,7 +12,7 @@ Zum Testen ohne Installation: `claude --plugin-dir /home/thorsten/lernpath-pflug
 | Befehl | Wirkung |
 | :--- | :--- |
 | `/lernpath:neuer-lernpfad <Thema>` | Legt einen neuen, leeren Lernpfad an (Thema, Typ, Ziel, Vorwissen, Endung, Ausführbefehl) |
-| `/lernpath:lernpfad-aufbauen` | Schreibt Roadmap, Kapitel, Lektionen und leere Lektionsordner; auch zum späteren Erweitern |
+| `/lernpath:lernpfad-aufbauen` | **Du** schreibst deinen Kurs in `ROADME.md` (oder nennst ihn im Chat); Claude legt daraus Ordner und Fortschritt an. Auch zum späteren Erweitern |
 | `/lernpath:aufgabe` | Aufgabe der aktuellen Lektion, höchstens 20 % Theorie, ohne Lösung |
 | `/lernpath:aktiv` | Active Recall: Beispiel lesen, ausblenden, aus dem Gedächtnis nachbauen |
 | `/lernpath:frage` | Denkanstoß, wenn du nach mindestens 5 Minuten feststeckst |
@@ -23,14 +23,16 @@ Zum Testen ohne Installation: `claude --plugin-dir /home/thorsten/lernpath-pflug
 | `/lernpath:fortschritt` | Zeigt den Stand aller Lernpfade |
 
 ## Ablauf
-1. `/lernpath:neuer-lernpfad Rust` (fragt u. a. die Aufgabenform: einzelne Datei oder Projektordner wie bei Cargo) erzeugt im aktuellen Ordner `Rust/` mit `LERNPFAD.md`, `ROADMAP.md`, `FORTSCHRITT.md`, `README.md`, `kurs/`.
-2. `/lernpath:lernpfad-aufbauen` plant Stufen, Kapitel und Lektionen (1 Konzept pro Lektion, Projekte am Kapitelende) und legt leere Lektionsordner an.
+1. `/lernpath:neuer-lernpfad Rust` (fragt u. a. die Aufgabenform: einzelne Datei oder Projektordner wie bei Cargo) erzeugt im aktuellen Ordner `Rust/` mit `LERNPFAD.md`, `ROADME.md`, `FORTSCHRITT.md`, `README.md`, `kurs/`.
+2. Du baust deinen Kurs selbst: Trage in `ROADME.md` unter L1/L2/L3 deine Kapitel und Lektionen ein (1 Konzept pro Lektion). Dann `/lernpath:lernpfad-aufbauen`: Claude legt die leeren Lektionsordner und den Fortschritt an. Vorschläge macht Claude nur, wenn du darum bittest.
+
+Beispiele: ein Lernpfad `Rust` und ein Lernpfad `Go` liegen nebeneinander, jeder mit eigener `ROADME.md`.
 3. Dann im Kreis: `aufgabe` → selbst lösen (ggf. `frage`, `aktiv`) → `loesung`.
 
 ## Lernpfad-Aufbau
 ```text
 <Lernpfad>/
-├── LERNPFAD.md  ROADMAP.md  FORTSCHRITT.md  README.md
+├── LERNPFAD.md  ROADME.md  FORTSCHRITT.md  README.md
 └── kurs/<Stufe>/<Kapitel>/<Lektion>/     # starten leer
 ```
 Mehrere Lernpfade nebeneinander sind möglich. Arbeite im Lernpfad-Ordner, sonst fragt Claude, welcher gemeint ist.
