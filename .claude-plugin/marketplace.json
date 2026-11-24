@@ -1,0 +1,11 @@
+{
+  "name": "lernpath-marketplace",
+  "owner": { "name": "Thorsten" },
+  "plugins": [
+    {
+      "name": "lernpath",
+      "source": "./",
+      "description": "KI-Lehrer für eigene Lernpfade (ohne fertige Kurse)"
+    }
+  ]
+}
