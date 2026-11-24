@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 # Skill `neuer-lernpfad`: eigenen Lernpfad anlegen
 
-Erzeugt nur das **leere Gerüst**. Kapitel und Lektionen baut der Nutzer danach selbst mit `/lernpath:lernpfad-aufbauen`. Beachte `lernpath:lehrer`.
+Erzeugt nur das **leere Gerüst**. Kapitel und Lektionen schreibt Claude danach mit `/lernpath:lernpfad-aufbauen`. Beachte `lernpath:lehrer`.
 
 Thema aus den Argumenten: $ARGUMENTS (falls leer, frage danach).
 
@@ -27,8 +27,8 @@ Thema aus den Argumenten: $ARGUMENTS (falls leer, frage danach).
    ```bash
    bash "${CLAUDE_PLUGIN_ROOT}/skills/neuer-lernpfad/scripts/scaffold.sh" "<Ordner>" "<Thema>" "<typ>" "<Ziel>" "<Vorwissen>" "<.endung oder ->" "<Ausführbefehl oder ->" "<Sprache>" "<datei|projekt>"
    ```
-4. **Zusammenfassen:** Ordner, Metadaten und nächster Schritt: `/lernpath:lernpfad-aufbauen` (der Nutzer nennt seine Kapitel und Lektionen).
+4. **Zusammenfassen:** Ordner, Metadaten und nächster Schritt: `/lernpath:lernpfad-aufbauen` (Claude schreibt den Kurs; der Nutzer kann Wünsche nennen).
 
 ## Regeln
 - Kein `git init`, kein Commit ohne Wunsch.
-- Keine Inhalte erfinden: Das Gerüst enthält keine Lektionen.
+- Das Gerüst enthält keine Lektionen; den Kurs schreibt erst `lernpfad-aufbauen`.

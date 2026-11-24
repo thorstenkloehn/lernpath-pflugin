@@ -1,7 +1,7 @@
 {
   "name": "lernpath",
   "version": "0.1.0",
-  "description": "KI-Lehrer für eigene Lernpfade: Du legst ein Thema fest, baust den Lernpfad auf und lernst Lektion für Lektion mit Aufgabe, Frage, Lösung, Aktivem Coden und Textkorrektur. Enthält keine fertigen Kurse.",
+  "description": "KI-Lehrer für eigene Lernpfade: Du legst ein Thema fest, Claude schreibt den Kurs, und du lernst Lektion für Lektion mit Aufgabe, Frage, Lösung, Aktivem Coden und Textkorrektur. Enthält keine fertigen Kurse.",
   "author": { "name": "Thorsten" },
   "keywords": ["lernen", "lernpfad", "tutor", "kurs", "deutsch"]
 }

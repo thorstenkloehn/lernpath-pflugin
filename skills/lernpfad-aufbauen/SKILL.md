@@ -1,37 +1,39 @@
 ---
 name: lernpfad-aufbauen
 description: >-
-  Der Nutzer baut seinen eigenen Kurs (z. B. Rust, Go) selbst: Er trägt Kapitel und Lektionen in ROADME.md ein
-  (oder nennt sie im Chat), Claude legt daraus die Ordner unter kurs/ und die Checkboxen in FORTSCHRITT.md an.
-  Claude erfindet keine Inhalte. Verwende diesen Skill, wenn der Nutzer seinen Lernpfad aufbauen, erweitern oder
-  ROADME.md in Ordner und Fortschritt übernehmen will.
-argument-hint: "[Lernpfad] [optional: Stufe Kapitel: Lektion; Lektion]"
+  Claude schreibt den Kurs (z. B. Rust, Go) für den Lernpfad: Aus Thema, Ziel und Vorwissen in LERNPFAD.md entwirft
+  Claude Kapitel und Lektionen in ROADME.md (L1–L3, 1 Konzept pro Lektion) und legt daraus die Ordner unter kurs/
+  und die Checkboxen in FORTSCHRITT.md an. Auch zum Erweitern. Verwende diesen Skill, wenn der Nutzer seinen
+  Lernpfad aufbauen, den Kurs schreiben lassen, erweitern oder ROADME.md in Ordner und Fortschritt übernehmen will.
+argument-hint: "[Lernpfad] [optional: Wünsche, z. B. Stufe, Schwerpunkt, Umfang]"
 disable-model-invocation: true
 ---
 
-# Skill `lernpfad-aufbauen`: Der Nutzer baut den Kurs selbst
+# Skill `lernpfad-aufbauen`: Claude schreibt den Kurs
 
 Beachte `lernpath:lehrer` und das [Lernpfadmodell](../lehrer/references/lernpfadmodell.md). Argumente: $ARGUMENTS
 
-**Grundsatz:** `ROADME.md` gehört dem **Nutzer** und ist die einzige Quelle für den Kurs. Du erfindest keine Kapitel oder Lektionen und machst keinen Plan, den niemand verlangt hat. Du bist nur für Anlegen und Konsistenz zuständig.
+**Grundsatz:** Du (Claude) schreibst den neutralen Kurs in `ROADME.md`, der Schüler muss ihn nicht selbst verfassen. Grundlage sind Thema, Ziel, Vorwissen und Typ aus `LERNPFAD.md`. Schüler-Wünsche (Schwerpunkt, Umfang, Stufen) und von ihm bereits geschriebene Teile von `ROADME.md` haben Vorrang. Du schreibst nur den **Kurs** (Kapitel und Lektionen als Konzeptzeilen), keine Aufgaben und keine Lösungen.
 
 ## Ablauf
-1. Aktiven Lernpfad ermitteln; `LERNPFAD.md` und `ROADME.md` lesen.
-2. **Nutzer-Eingaben in `ROADME.md` übernehmen:** Nennt der Nutzer Kapitel/Lektionen im Chat oder in den Argumenten, trage sie unter der genannten Stufe (`L1`, `L2`, `L3`; fehlt sie, frage) in `ROADME.md` ein, genau in seinen Worten, im Format der Vorlage:
-   ```text
-   ### Kapitel NN: <Name>
-   - **Lektion NN:** <ein Konzept>
-   ```
-   Die Stufen heißen `## 🟢 L1 Grundlagen (…)`, `## 🟡 L2 Fortgeschritten (…)`, `## 🟠 L3 Profi (…)`.
-   Fehlt bei einer Lektion das Konzept oder ist es ein Platzhalter `<…>`, frage nach, statt zu ergänzen. **Platzhalter `<…>` der Vorlage sind keine Lektionen** und werden nie angelegt; ersetze sie erst, wenn der Nutzer echte Inhalte nennt. **Vorschläge nur, wenn der Nutzer ausdrücklich darum bittet**, und dann erst nach seiner Auswahl eintragen.
-   Hat er `ROADME.md` selbst geschrieben, nimm sie, wie sie ist. Ist der Aufbau unklar oder widersprüchlich, frage nach.
+1. Aktiven Lernpfad ermitteln; `LERNPFAD.md`, `ROADME.md` und `FORTSCHRITT.md` lesen.
+2. **Kurs schreiben oder erweitern** (`ROADME.md`):
+   - **Platzhalter `<…>` der Vorlage ersetzen.** Bestehende echte Kapitel und Lektionen des Schülers bleiben unverändert und in ihrer Reihenfolge; baue darauf auf.
+   - Gibt der Schüler Wünsche an (z. B. „nur L1", „mehr Ownership", „+ Kapitel Fehlerbehandlung"), setze genau das um. Ohne Wunsch schreibe alle drei Stufen passend zum Ziel: `## 🟢 L1 Grundlagen (…)`, `## 🟡 L2 Fortgeschritten (…)`, `## 🟠 L3 Profi (…)`, jeweils mit sinnvollem Untertitel.
+   - Format je Kapitel:
+     ```text
+     ### Kapitel NN: <Name>
+     - **Lektion NN:** <ein Konzept>
+     ```
+   - Qualität: **1 Konzept pro Lektion**, vom Einfachen zum Komplexen, jede Lektion setzt nur Vorheriges voraus; 3–8 Lektionen pro Kapitel; am Kapitelende möglichst eine Projekt-Lektion (`Projekt – <Name>`), die den Kapitelstoff verbindet. Passe Tiefe und Tempo an das Vorwissen an. Bei Typ `sprache`/`sonstiges` entsprechend Themen statt Code.
+   - Ist das Ziel unklar oder zu weit, frage kurz nach, statt zu raten.
 3. **Synchronisieren** (nur Fehlendes anlegen):
-   - Ordner `kurs/<Stufe>/Kapitel_NN_<thema>/Lektion_NN_<thema>/` mit `.gitkeep` für jede echte Lektion in `ROADME.md` (Ordnername aus dem Konzept abgeleitet; Namensregeln im Modell, ASCII, Umlaute als ae/oe/ue/ss).
+   - Ordner `kurs/<Stufe>/Kapitel_NN_<thema>/Lektion_NN_<thema>/` mit `.gitkeep` für jede echte Lektion in `ROADME.md` (Namen aus dem Konzept abgeleitet; Regeln im Modell, ASCII, Umlaute als ae/oe/ue/ss).
    - `FORTSCHRITT.md`: pro Stufe, Kapitel und Lektion Überschriften und Checkboxen `- [ ] \`Lektion_NN_x\` – Beschreibung` ergänzen. Steht `**Aktuelle Lektion:**` noch auf `-`, setze sie auf die erste Lektion. Bestehende Haken **nie** ändern.
 4. **Prüfen:** Jede Lektion in `ROADME.md` hat Ordner und Checkbox und umgekehrt (`find kurs -type d`). Abweichungen melden, nicht stillschweigend löschen.
-5. **Zusammenfassen:** Was wurde angelegt; nächster Schritt: weitere Lektionen in `ROADME.md` ergänzen und den Befehl wiederholen, oder `/lernpath:aufgabe`.
+5. **Zusammenfassen:** Kurze Übersicht (Stufe, Kapitel, Lektionenzahl) und nächster Schritt: `/lernpath:aufgabe`. Der Schüler darf den Kurs jederzeit in `ROADME.md` ändern oder mit diesem Befehl erweitern lassen.
 
 ## Regeln
 - Lektionsordner bleiben leer: keine Aufgaben oder Lösungen vorab (die entstehen live bei `aufgabe`).
-- Nichts überschreiben oder löschen. Umbenennen, Löschen und Umsortieren nur auf ausdrücklichen Wunsch und nach kurzer Rückfrage.
-- Anzahl der Kapitel und Lektionen sowie Projekt-Lektionen sind **Entscheidungen des Nutzers**, keine Pflicht.
+- Nichts überschreiben oder löschen. Umbenennen, Löschen und Umsortieren bestehender Lektionen nur auf ausdrücklichen Wunsch und nach kurzer Rückfrage.
+- Bereits abgehakte Lektionen und ihre Ordner bleiben unangetastet.

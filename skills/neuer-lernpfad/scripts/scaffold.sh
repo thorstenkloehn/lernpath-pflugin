@@ -32,7 +32,7 @@ cat > "$DIR/ROADME.md" <<MD
 **Ziel:** $ZIEL
 **Vorwissen:** $VORWISSEN
 
-Dieser Lernpfad gehört dir: Du baust ihn selbst. Trage unten deine Kapitel und Lektionen ein und starte danach \`/lernpath:lernpfad-aufbauen\`. Claude legt daraus die leeren Lektionsordner unter \`kurs/\` und die Checkboxen in \`FORTSCHRITT.md\` an.
+Starte \`/lernpath:lernpfad-aufbauen\`: Claude schreibt aus Ziel und Vorwissen die Kapitel und Lektionen unten und legt die leeren Lektionsordner unter \`kurs/\` sowie die Checkboxen in \`FORTSCHRITT.md\` an. Du kannst den Kurs jederzeit selbst ändern.
 
 ---
 
@@ -46,11 +46,11 @@ Dieser Lernpfad gehört dir: Du baust ihn selbst. Trage unten deine Kapitel und 
 | 4 | \`/lernpath:frage\` | Denkanstoß, wenn du feststeckst |
 | 5 | \`/lernpath:loesung\` | Deine Lösung prüfen lassen, bei Erfolg wird die Lektion abgehakt |
 
-## So schreibst du deine Lektionen
+## So sind die Lektionen aufgebaut
 - **1 Konzept pro Lektion.** Eine Lektion ist ein kleiner Schritt, der in wenigen Minuten machbar ist.
 - Ordne vom Einfachen zum Komplexen. Eine Lektion setzt nur voraus, was davor steht.
 - Pro Kapitel 3–8 Lektionen. Beschreibe jede Lektion in einem Satz: *Was lerne ich, und was kenne ich schon (Vorwissen)?*
-- Optional: Setze am Kapitelende eine **Projekt-Lektion** (\`Lektion NN: Projekt – <Name>\`), die den Stoff des Kapitels verbindet.
+- Am Kapitelende steht möglichst eine **Projekt-Lektion** (\`Lektion NN: Projekt – <Name>\`), die den Stoff des Kapitels verbindet.
 
 ---
 

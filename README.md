@@ -1,6 +1,6 @@
 # lernpath – Claude-Code-Plugin für eigene Lernpfade
 
-**Der KI-Lehrer ist Claude, du bist der Schüler.** Das Plugin enthält **keine fertigen Kurse**. Du legst eigene Lernpfade an (Programmiersprache, Fremdsprache, jedes Thema) und baust sie später zu Kursen aus. Claude erklärt kurz (max. 20 % Theorie), gibt Tipps und prüft deine Lösungen. Fertige Lösungen gibt es nur auf ausdrücklichen Wunsch (Spoiler-Verbot).
+**Der KI-Lehrer ist Claude, du bist der Schüler.** Das Plugin enthält **keine fertigen Kurse**. Du legst eigene Lernpfade an (Programmiersprache, Fremdsprache, jedes Thema), und Claude schreibt den Kurs dazu. Claude erklärt kurz (max. 20 % Theorie), gibt Tipps und prüft deine Lösungen. Fertige Lösungen gibt es nur auf ausdrücklichen Wunsch (Spoiler-Verbot).
 
 ## Installation
 ```text
@@ -12,7 +12,7 @@ Zum Testen ohne Installation: `claude --plugin-dir /home/thorsten/lernpath-pflug
 | Befehl | Wirkung |
 | :--- | :--- |
 | `/lernpath:neuer-lernpfad <Thema>` | Legt einen neuen, leeren Lernpfad an (Thema, Typ, Ziel, Vorwissen, Endung, Ausführbefehl) |
-| `/lernpath:lernpfad-aufbauen` | **Du** schreibst deinen Kurs in `ROADME.md` (oder nennst ihn im Chat); Claude legt daraus Ordner und Fortschritt an. Auch zum späteren Erweitern |
+| `/lernpath:lernpfad-aufbauen` | **Claude schreibt den Kurs** (Kapitel und Lektionen in `ROADME.md`, aus Ziel und Vorwissen) und legt Ordner und Fortschritt an. Auch zum späteren Erweitern; Wünsche als Argument möglich |
 | `/lernpath:aufgabe` | Aufgabe der aktuellen Lektion, höchstens 20 % Theorie, ohne Lösung |
 | `/lernpath:aktiv` | Active Recall: Beispiel lesen, ausblenden, aus dem Gedächtnis nachbauen |
 | `/lernpath:frage` | Denkanstoß, wenn du nach mindestens 5 Minuten feststeckst |
@@ -24,7 +24,7 @@ Zum Testen ohne Installation: `claude --plugin-dir /home/thorsten/lernpath-pflug
 
 ## Ablauf
 1. `/lernpath:neuer-lernpfad Rust` (fragt u. a. die Aufgabenform: einzelne Datei oder Projektordner wie bei Cargo) erzeugt im aktuellen Ordner `Rust/` mit `LERNPFAD.md`, `ROADME.md`, `FORTSCHRITT.md`, `README.md`, `kurs/`.
-2. Du baust deinen Kurs selbst: Trage in `ROADME.md` unter L1/L2/L3 deine Kapitel und Lektionen ein (1 Konzept pro Lektion). Dann `/lernpath:lernpfad-aufbauen`: Claude legt die leeren Lektionsordner und den Fortschritt an. Vorschläge macht Claude nur, wenn du darum bittest.
+2. `/lernpath:lernpfad-aufbauen`: Claude schreibt den Kurs unter L1/L2/L3 in `ROADME.md` (1 Konzept pro Lektion) und legt die leeren Lektionsordner und den Fortschritt an. Du kannst Wünsche nennen oder `ROADME.md` jederzeit selbst ändern und den Befehl wiederholen.
 
 Beispiele: ein Lernpfad `Rust` und ein Lernpfad `Go` liegen nebeneinander, jeder mit eigener `ROADME.md`.
 3. Dann im Kreis: `aufgabe` → selbst lösen (ggf. `frage`, `aktiv`) → `loesung`.
